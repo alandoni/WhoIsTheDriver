@@ -1,0 +1,32 @@
+{
+  "name": "dias-de-carona",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.3.1",
+    "react-native": "0.55.3",
+    "react-native-safe-area-view": "^0.7.0",
+    "react-navigation": "^1.5.11"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "22.4.3",
+    "jsdom": "^11.10.0",
+    "react-native-mock-render": "0.0.25",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "preset": "react-native",
+    "testRegex": "tests/.+Specs.js",
+    "setupFiles": [
+      "<rootDir>/tests/jestsetup.js"
+    ]
+  }
+}
