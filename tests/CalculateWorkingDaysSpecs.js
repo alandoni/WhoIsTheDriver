@@ -5,7 +5,7 @@ const users = [];
 users.push(new User('Alan', {day: 5, priority: 1}, [{initialDate: new Date(2018, 6, 1), finalDate: new Date(2018, 7, 1)}]));
 users.push(new User('Mychelle', {day: 2, priority: 1}, [{initialDate: new Date(2018, 8, 1), finalDate: new Date(2018, 9, 1)}]));
 users.push(new User('Ana', {day: 3, priority: 1}, [{initialDate: new Date(2018, 1, 1), finalDate: new Date(2018, 2, 1)}]));
-users.push(new User('Thiago', {day: 5, priority: 0}, [{initialDate: new Date(2018, 4, 1), finalDate: new Date(2018, 5, 1)}]));
+users.push(new User('Thiago', {day: 5, priority: 0}, [{initialDate: new Date(2018, 10, 1), finalDate: new Date(2018, 11, 1)}]));
 
 describe('CalculateWorkingDays', () => {
     
@@ -115,8 +115,17 @@ describe('CalculateWorkingDays', () => {
         const events = calculateWorkingDays.processDatesForUsers(new Date(2018, 4, 6), new Date(2018, 4, 12), users, []);
         expect(events[0].user.name).toEqual('Alan');
         expect(events[1].user.name).toEqual('Mychelle');
-        expect(events[2].user.name).toEqual('Alan');
+        expect(events[2].user.name).toEqual('Ana');
+        expect(events[3].user.name).toEqual('Alan');
+        expect(events[4].user.name).toEqual('Thiago');
+    });
+
+    it('Distribute days by users with priority with holidays', () => {
+        const calculateWorkingDays = new CalculateWorkingDays();
+        const events = calculateWorkingDays.processDatesForUsers(new Date(2018, 4, 6), new Date(2018, 4, 12), users, [new Date(2018, 4, 8)]);
+        expect(events[0].user.name).toEqual('Alan');
+        expect(events[1].user.name).toEqual('Mychelle');
+        expect(events[2].user.name).toEqual('Ana');
         expect(events[3].user.name).toEqual('Thiago');
-        expect(events[4].user.name).toEqual('Ana');
     });
 });
